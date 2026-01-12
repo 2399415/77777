@@ -2,16 +2,28 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>我踏马来了</title>
-
-  <!-- 样式 -->
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <!-- 这里粘你 CodePen HTML 的 body 内容 -->
-  <!-- 比如马、按钮、文字这些 -->
+  <div class="app">
+    <div class="horse-wrap">
+      <img
+        id="horse"
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Horse_running.gif/320px-Horse_running.gif"
+        alt="horse"
+      />
+    </div>
+
+    <div class="text" id="statusText">你点了</div>
+    <div class="count">
+      第 <span id="round">1</span> 轮 · <span id="count">0</span> 次
+    </div>
+
+    <button id="tapBtn">我踏马来了</button>
+  </div>
 
   <script src="script.js"></script>
 </body>
