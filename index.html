@@ -8,9 +8,9 @@
   <style>
     body {
       margin: 0;
-      background: #0b0b0b;
-      color: #e5e5e5;
-      font-family: monospace;
+      background: radial-gradient(circle at top, #111, #000);
+      color: #eaeaea;
+      font-family: -apple-system, BlinkMacSystemFont, monospace;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -22,26 +22,33 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 18px;
+      gap: 20px;
     }
 
-    img {
-      width: 120px;
+    .horse {
+      font-size: 88px;
       filter: drop-shadow(0 0 12px #00ff9c);
     }
 
+    .hint {
+      opacity: 0.8;
+      font-size: 18px;
+    }
+
     .status {
-      font-size: 16px;
-      opacity: 0.75;
+      opacity: 0.6;
+      font-size: 14px;
     }
 
     button {
-      background: #00ff9c;
+      margin-top: 20px;
+      background: #fff;
       color: #000;
       border: none;
-      padding: 14px 26px;
+      padding: 18px 36px;
       border-radius: 999px;
-      font-size: 16px;
+      font-size: 18px;
+      font-weight: 600;
       cursor: pointer;
     }
 
@@ -53,41 +60,33 @@
 
 <body>
   <div class="app">
-    <img
-      src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Horse_icon.png"
-      alt="horse"
-    />
+    <!-- 马本体（emoji，永不失效） -->
+    <div class="horse">🐴</div>
 
-    <div id="status" class="status">
-      第 1 轮 · 0 次
-    </div>
+    <div id="hint" class="hint">差不多得了</div>
+    <div id="status" class="status">第 1 轮 · 0 次</div>
 
     <button id="btn">我踏马来了</button>
   </div>
 
   <script>
     let count = 0;
-    const btn = document.getElementById("btn");
     const status = document.getElementById("status");
+    const hint = document.getElementById("hint");
+    const btn = document.getElementById("btn");
 
     btn.onclick = () => {
       count++;
 
-      let text = `第 1 轮 · ${count} 次`;
+      status.innerText = `第 1 轮 · ${count} 次`;
 
-      if (count >= 50) {
-        text += " · 有点不对劲了";
-      }
-
-      if (count >= 100) {
-        text += " · 你是不是在等爆马";
-      }
-
-      if (count >= 150) {
-        text = "马没爆，你心态快爆了";
-      }
-
-      status.innerText = text;
+      if (count === 10) hint.innerText = "你开始认真了";
+      if (count === 30) hint.innerText = "差不多得了";
+      if (count === 50) hint.innerText = "再点就不是玩笑了";
+      if (count === 80) hint.innerText = "你是不是在等什么";
+      if (count === 100) hint.innerText = "马不会爆的";
+      if (count === 150) hint.innerText = "但你会累";
+      if (count === 200) hint.innerText = "欢迎来到币圈";
     };
   </script>
 </body>
