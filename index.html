@@ -2,29 +2,93 @@
 <html lang="zh">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>我踏马来了</title>
-  <link rel="stylesheet" href="style.css" />
+
+  <style>
+    body {
+      margin: 0;
+      background: #0b0b0b;
+      color: #e5e5e5;
+      font-family: monospace;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+
+    .app {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    img {
+      width: 120px;
+      filter: drop-shadow(0 0 12px #00ff9c);
+    }
+
+    .status {
+      font-size: 16px;
+      opacity: 0.75;
+    }
+
+    button {
+      background: #00ff9c;
+      color: #000;
+      border: none;
+      padding: 14px 26px;
+      border-radius: 999px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    button:active {
+      transform: scale(0.96);
+    }
+  </style>
 </head>
+
 <body>
-
   <div class="app">
-    <div class="horse-wrap">
-      <img
-        id="horse"
-        src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/1b/Horse_running.gif/320px-Horse_running.gif"
-        alt="horse"
-      />
+    <img
+      src="https://upload.wikimedia.org/wikipedia/commons/4/4f/Horse_icon.png"
+      alt="horse"
+    />
+
+    <div id="status" class="status">
+      第 1 轮 · 0 次
     </div>
 
-    <div class="text" id="statusText">你点了</div>
-    <div class="count">
-      第 <span id="round">1</span> 轮 · <span id="count">0</span> 次
-    </div>
-
-    <button id="tapBtn">我踏马来了</button>
+    <button id="btn">我踏马来了</button>
   </div>
 
-  <script src="script.js"></script>
+  <script>
+    let count = 0;
+    const btn = document.getElementById("btn");
+    const status = document.getElementById("status");
+
+    btn.onclick = () => {
+      count++;
+
+      let text = `第 1 轮 · ${count} 次`;
+
+      if (count >= 50) {
+        text += " · 有点不对劲了";
+      }
+
+      if (count >= 100) {
+        text += " · 你是不是在等爆马";
+      }
+
+      if (count >= 150) {
+        text = "马没爆，你心态快爆了";
+      }
+
+      status.innerText = text;
+    };
+  </script>
 </body>
 </html>
